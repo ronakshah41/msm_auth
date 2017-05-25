@@ -2,6 +2,34 @@
   <h3>Movie #<%= @movie.id %></h3>
 </div>
 
+<div class="list-group-item">
+  <form action="/create_bookmark" method="post">
+    <!-- Hidden input for authenticity token to protect from forgery -->
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+    <input name="movie_id" type="hidden" value="<%= @movie.id %>">
+
+    <!-- Label and input for actor_id -->
+    <div class="form-group">
+      <!-- <label for="movie_id" class="control-label">
+        Movie
+      </label> -->
+      <input type="hidden" id="movie_id" name="movie_id" placeholder="movie_id" class="form-control" value = <%= @movie.id %>>
+    </div>
+
+    <!-- Label and input for name -->
+    <div class="form-group">
+      <!-- <label for="user_id" class="control-label">
+        Name
+      </label> -->
+      <input type="hidden" id="user_id" name="user_id" placeholder="Name" class="form-control" value = <%= current_user.id %>>
+    </div>
+
+    <button class="btn btn-success">
+      Create Bookmark </button>
+  </form>
+</div>
+
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
@@ -72,6 +100,7 @@
               </button>
             </form>
           </li>
+
         </ul>
       </dd>
     </dl>

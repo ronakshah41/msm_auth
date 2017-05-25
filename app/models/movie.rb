@@ -7,4 +7,5 @@ class Movie < ActiveRecord::Base
   belongs_to :director
   has_many :characters
   has_many :actors, :through => :characters
+  has_many :bookmarks
 end
